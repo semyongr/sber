@@ -5,7 +5,7 @@ SET @period = 100;
  
 WHILE @period > 0
     BEGIN
-		PRINT @date
+	PRINT @date
         SET @period = @period - 1
         SET @date = DATEADD(day, RAND()*(7-2)+2, @date)
     END;
