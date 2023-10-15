@@ -1,12 +1,9 @@
-
-with who(id_from, id_to) as (
-select id_from, (0-amount) from transfers
+WITH union_transfers(id_from, id_to) AS (
+SELECT id_from, (0-amount) FROM transfers
 UNION
-select id_to, amount from transfers)
+SELECT id_to, amount FROM transfers)
 
-
-
-select id_from as acc, SUM(id_to) as balance from who
-group by id_from
+SELECT id_from AS acc, SUM(id_to) AS balance FROM union_transfers
+GROUP BY id_from
 
 
